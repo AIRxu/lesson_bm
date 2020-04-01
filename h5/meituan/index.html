@@ -9,6 +9,7 @@
     <title>Document</title>
     <script type="text/javascript"
         src="https://api.map.baidu.com/api?v=2.0&ak=pWv7FfyBIQ5QE9u8lNe0YXI57RFDYUPY"></script>
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
     <style>
         * {
             margin: 0;
@@ -22,6 +23,17 @@
 
         img {
             max-width: 100%;
+        }
+
+        @font-face {
+            font-family: 'iconfont';
+            /* project id 1728120 */
+            src: url('//at.alicdn.com/t/font_1728120_j9oousbe4op.eot');
+            src: url('//at.alicdn.com/t/font_1728120_j9oousbe4op.eot?#iefix') format('embedded-opentype'),
+                url('//at.alicdn.com/t/font_1728120_j9oousbe4op.woff2') format('woff2'),
+                url('//at.alicdn.com/t/font_1728120_j9oousbe4op.woff') format('woff'),
+                url('//at.alicdn.com/t/font_1728120_j9oousbe4op.ttf') format('truetype'),
+                url('//at.alicdn.com/t/font_1728120_j9oousbe4op.svg#iconfont') format('svg');
         }
 
         #map {
@@ -62,6 +74,7 @@
             white-space: nowrap;
             height: 2rem;
         }
+
         .poi-item-wrapper .poi-info .location {
             position: absolute;
             top: 0;
@@ -91,7 +104,22 @@
                 <div class="poi-info">
                     <div class="poi-name"></div>
                     <div class="price-wrapper">
+                        <span class="stars">
+                            <i class="iconfont icon-wjx"></i>
+                            <i class="iconfont icon-wjx"></i>
+                            <i class="iconfont icon-wjx"></i>
+                            <i class="iconfont icon-wjx"></i>
+                            <i class="iconfont icon-wjx"></i>
+                        </span>
+                        <span class="price">￥99/人</span>
                         <div class="location"></div>
+                    </div>
+                    <div class="cate-wrapper">
+                        <span class="cateName">西式快餐/炸鸡</span>
+                        <span class="small-tag-0">大润发周边美食第一名</span>
+                    </div>
+                    <div class="service-tag">
+                        <span class="service-tag-0">支持外卖</span>
                     </div>
                 </div>
             </div>
@@ -140,8 +168,8 @@
             // dom元素操作在页面上动态显示元素
             document.querySelector('.poi-name').innerHTML = '肯德基';
             document.querySelector('.location').innerHTML = distance;
-            document.querySelector('.imgbox img').src = 
-            "https://p0.meituan.net/200.0/deal/607cffdccca7f4da09a2dddeedd31a8e49072.jpg@126_0_388_388a%7C267h_267w_2e_100Q"
+            document.querySelector('.imgbox img').src =
+                "https://p0.meituan.net/200.0/deal/607cffdccca7f4da09a2dddeedd31a8e49072.jpg@126_0_388_388a%7C267h_267w_2e_100Q"
         }
     </script>
 </body>

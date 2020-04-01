@@ -1,0 +1,16 @@
+{
+  "id": "1728120",
+  "name": "美团",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1321305",
+      "name": "经典案例_五角星_收藏后",
+      "font_class": "wjx",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
+    }
+  ]
+}
