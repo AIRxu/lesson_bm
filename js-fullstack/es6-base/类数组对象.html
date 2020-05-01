@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<ul>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+<script>
+  // 人类
+  // 像弟弟一样的人，实例
+  function Person() {}
+  // 静态方法:不需要实例化就可以调用的
+  // static 定义静态方法
+  Person.from = function() {
+    console.log('女娲');
+  }
+  // 不是静态方法必须要经过实例化才可以调用的
+  Person.prototype.forEach = function() {
+    console.log('循环');
+  }
+  // 实例 对象
+  let didi = new Person();
+  didi.forEach();
+  Person.from();
+
+  // 类似数组的对象
+  // 1. 可以向数组一样，用数组[i]取值
+  // 2. length
+  // 不全是数组
+  // 比如 arguements
+
+  const lis = document.querySelectorAll('li');
+  // console.log(lis);
+  // lis.map(function() {})   //这样取不到还调用就会报错
+  Array.prototype.map.call(lis, function(liNode) {
+    console.log(liNode);
+  })
+  // Array是一个内置的类
+  // arr 是Array的实例
+
+  let arr = [0, 1]
+  // forEach需要参数
+  arr.forEach(function(num) {})
+  console.log(arr.forEach);
+  
+  function sum() {
+    // 不确定 形参的个数
+    console.log(arguments)
+    let sum = 0;
+    // 只有数组才有 forEach 要用怎么办
+    // 方法   1.借用一下，知道在哪，要考虑 this
+    // arguments.forEach 拿不到  forEach:js 实现在哪里？
+    // Array.prototype.forEach
+    Array.prototype.forEach.call(arguments, function(num){ // 第一个参数指明内部的this，剩下的参数
+      console.log(num);
+    })
+    // 方法   2.Array.from() 方法从一个类似数组对象创建一个新的 数组
+    const arr =Array.from(arguments)
+    arr.forEach(function(num) {
+      console.log(num);
+    })
+    // arguments.forEach 本意: forEach 内部 this 指向 arguments
+    // arguments.forEach(num => {
+    //   sum += num;
+    // });
+    // console.log(sum);
+  }
+
+  sum(0, 1, 3, 4)
+  console.log(Math.max(1, 2, 3, 4, 5))
+
+
+  // Array.from   静态方法
+  // Array.prototype.forEach
+</script>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" name="input" id="input" placeholder="搜点什么吧">
+  <button id="btn">立即搜索</button>
+  <ul id="songs">
+
+  </ul>
+  <script>
+    const btn = document.getElementById('btn');
+    btn.addEventListener('click', function () {
+      const val = document.getElementById('input').value;
+      // ajax | http
+      // button 通过一个 ajax | http 向后端请求数据
+      const xhr = new XMLHttpRequest();
+      // open的目的是选择向哪个后端要数据 通过url
+      // 1. 请求的方法 get，http规定的一个方法
+      // 2. request url
+      // 3. true 异步 false 同步
+      xhr.open('get',
+        `http://neteasecloudmusicapi.zhaoboy.com/search?keywords=${val}`, true);
+      // 请求的处理过程 需要耗费时间
+      // 异步：不同在这等着 等我拿到资源了 我再回调你   js 单线程 不会阻塞
+      // 同步：就在这等着 等我拿到资源了 我才会往下执行
+      // 
+      xhr.onreadystatechange = function () {
+        console.log(xhr.readyState, xhr.response)
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          // console.log(JSON.parse(xhr.response));
+          let res = JSON.parse(xhr.response);
+          console.log(res);
+          document.getElementById('songs').innerHTML = res.result.songs.map(function(song) {
+            let {artists} = song;
+            // 也可以换成 artists = song.artists
+            let singers = artists.map(function(artists) {
+              return artists.name
+            }).join('/')
+            return `
+            <li>
+              ${song.name} 演唱：${singers} 专辑：${song.album.name}
+            <li>
+            `
+          }).join('')
+        }
+      }
+      xhr.send();
+      // 等拿到了数据（同步）
+      // 无阻塞 不等数据回来 立马执行（异步）
+      console.log(xhr.response + '---------------');
+      console.log(123456);
+    })
+  </script>
+</body>
+
+</html>

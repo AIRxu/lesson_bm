@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .progress-bar{
+
+    }
+    .progress{
+      background-color: red;
+    }
+    .progress-button{
+      width: 14px;
+      height: 14px;
+      /* 两个方向上的半径都是边长的50% */
+      border-radius: 50%;
+      border: 2px solid #fff;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <!-- 1.拖拽 2.进度 -->
+  <div class="progress-bar">
+    <div class="progress"></div>
+    <div class="progress-button"></div>
+  </div>
+
+  <script>
+    class progress{
+      constructor(selector) {
+        this.wrap = document.querySelector(selector);
+        this.progressBtn = this.wrap.querySelector('.progress-button');
+        this.initEvent();
+      }
+      initEvent() {
+        this.progressBtn.addEventListener('touchstart', () => {
+          
+        })
+      }
+    }
+    new progress('.progress-bar')
+  </script>
+</body>
+</html>

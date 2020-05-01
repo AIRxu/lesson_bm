@@ -2,176 +2,183 @@
 <html lang="en" style="font-size: 100px;">
 
 <head>
-    <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <meta name="viewport"
-        content="initial-scale=0.5,maximum-scale=0.5, minimum-scale=0.5,width=device-width, height=device-height, user-scalable=no">
-    <title>Document</title>
-    <script type="text/javascript"
-        src="https://api.map.baidu.com/api?v=2.0&ak=pWv7FfyBIQ5QE9u8lNe0YXI57RFDYUPY"></script>
-    <link rel="stylesheet" href="./iconfont/iconfont.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta name="viewport"
+    content="initial-scale=0.5,maximum-scale=0.5, minimum-scale=0.5,width=device-width, height=device-height, user-scalable=no">
+  <title>Document</title>
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=pWv7FfyBIQ5QE9u8lNe0YXI57RFDYUPY"></script>
+  <link rel="stylesheet" href="./iconfont/iconfont.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
 
-        body {
-            font-size: .28rem;
-            line-height: 1.5;
-        }
+    body {
+      font-size: .28rem;
+      line-height: 1.5;
+    }
 
-        img {
-            max-width: 100%;
-        }
+    img {
+      max-width: 100%;
+    }
 
-        @font-face {
-            font-family: 'iconfont';
-            /* project id 1728120 */
-            src: url('//at.alicdn.com/t/font_1728120_j9oousbe4op.eot');
-            src: url('//at.alicdn.com/t/font_1728120_j9oousbe4op.eot?#iefix') format('embedded-opentype'),
-                url('//at.alicdn.com/t/font_1728120_j9oousbe4op.woff2') format('woff2'),
-                url('//at.alicdn.com/t/font_1728120_j9oousbe4op.woff') format('woff'),
-                url('//at.alicdn.com/t/font_1728120_j9oousbe4op.ttf') format('truetype'),
-                url('//at.alicdn.com/t/font_1728120_j9oousbe4op.svg#iconfont') format('svg');
-        }
+    @font-face {
+      font-family: 'iconfont';
+      /* project id 1728120 */
+      src: url('//at.alicdn.com/t/font_1728120_j9oousbe4op.eot');
+      src: url('//at.alicdn.com/t/font_1728120_j9oousbe4op.eot?#iefix') format('embedded-opentype'),
+        url('//at.alicdn.com/t/font_1728120_j9oousbe4op.woff2') format('woff2'),
+        url('//at.alicdn.com/t/font_1728120_j9oousbe4op.woff') format('woff'),
+        url('//at.alicdn.com/t/font_1728120_j9oousbe4op.ttf') format('truetype'),
+        url('//at.alicdn.com/t/font_1728120_j9oousbe4op.svg#iconfont') format('svg');
+    }
 
-        #map {
-            width: 100vw;
-            height: 100vh;
-        }
+    #map {
+      width: 100vw;
+      height: 100vh;
+    }
 
-        .poi-item-wrapper {
-            background-color: #fff;
-            padding: 0.24rem 0 0 0.3rem;
-            border-bottom: 1px solid #e5e5e5;
-        }
+    .poi-item-wrapper {
+      background-color: #fff;
+      padding: 0.24rem 0 0 0.3rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
 
-        .poi-item-wrapper .poi-info-wrapper {
-            display: flex;
-        }
+    .poi-item-wrapper .poi-info-wrapper {
+      display: flex;
+    }
 
-        .poi-item-wrapper .image-wrapper {
-            position: relative;
-            margin-top: 0.05rem;
-            width: 1.5rem;
-            height: 1.61rem;
-        }
+    .poi-item-wrapper .image-wrapper {
+      position: relative;
+      margin-top: 0.05rem;
+      width: 1.5rem;
+      height: 1.61rem;
+    }
 
-        .poi-item-wrapper .poi-info {
-            margin-left: 0.18rem;
-            flex: 1;
+    .poi-item-wrapper .poi-info {
+      margin-left: 0.18rem;
+      flex: 1;
 
-        }
+    }
 
-        .poi-item-wrapper .poi-info .price-wrapper {
-            position: relative;
-            font-size: 0.24rem;
-            line-height: 0.33rem;
-            margin-top: 0.06rem;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            height: 2rem;
-        }
+    .poi-item-wrapper .poi-info .price-wrapper {
+      position: relative;
+      font-size: 0.24rem;
+      line-height: 0.33rem;
+      margin-top: 0.06rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      height: 2rem;
+    }
 
-        .poi-item-wrapper .poi-info .location {
-            position: absolute;
-            top: 0;
-            right: 0;
-            height: 0.33rem;
-            line-height: 0.33rem;
-            font-size: 0.24rem;
-            font-family: PingFangSC-Regular;
-            color: #666666;
-            letter-spacing: 0.2px;
-        }
-    </style>
+    .poi-item-wrapper .poi-info .location {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 0.33rem;
+      line-height: 0.33rem;
+      font-size: 0.24rem;
+      font-family: PingFangSC-Regular;
+      color: #666666;
+      letter-spacing: 0.2px;
+    }
+  </style>
 </head>
 
 <body>
-    <!-- html   +   css -->
-    <!-- 附近的商家 info -->
-    <div class="shop-list">
-        <div class="poi-item-wrapper">
-            <div class="poi-info-wrapper">
-                <div class="image-wrapper">
-                    <div class="imgbox">
-                        <img src="https://img.meituan.net/msmerchant/689dff99d4a3a151be129b65140b27d4234195.jpg@320w_320h_1e_1c"
-                            alt="">
-                    </div>
-                </div>
-                <div class="poi-info">
-                    <div class="poi-name"></div>
-                    <div class="price-wrapper">
-                        <span class="stars">
-                            <i class="iconfont icon-wjx"></i>
-                            <i class="iconfont icon-wjx"></i>
-                            <i class="iconfont icon-wjx"></i>
-                            <i class="iconfont icon-wjx"></i>
-                            <i class="iconfont icon-wjx"></i>
-                        </span>
-                        <span class="price">￥99/人</span>
-                        <div class="location"></div>
-                    </div>
-                    <div class="cate-wrapper">
-                        <span class="cateName">西式快餐/炸鸡</span>
-                        <span class="small-tag-0">大润发周边美食第一名</span>
-                    </div>
-                    <div class="service-tag">
-                        <span class="service-tag-0">支持外卖</span>
-                    </div>
-                </div>
-            </div>
+  <!-- html   +   css -->
+  <!-- 附近的商家 info -->
+  <div class="shop-list">
+    <div class="poi-item-wrapper">
+      <div class="poi-info-wrapper">
+        <div class="image-wrapper">
+          <div class="imgbox">
+            <img src="https://img.meituan.net/msmerchant/689dff99d4a3a151be129b65140b27d4234195.jpg@320w_320h_1e_1c"
+              alt="">
+          </div>
         </div>
-        <div class="poi-item-wrapper">
-
+        <div class="poi-info">
+          <div class="poi-name"></div>
+          <div class="price-wrapper">
+            <span class="stars">
+              <i class="iconfont icon-wjx"></i>
+              <i class="iconfont icon-wjx"></i>
+              <i class="iconfont icon-wjx"></i>
+              <i class="iconfont icon-wjx"></i>
+              <i class="iconfont icon-wjx"></i>
+            </span>
+            <span class="price">￥99/人</span>
+            <div class="location"></div>
+          </div>
+          <div class="cate-wrapper">
+            <span class="cateName">西式快餐/炸鸡</span>
+            <span class="small-tag-0">大润发周边美食第一名</span>
+          </div>
+          <div class="service-tag">
+            <span class="service-tag-0">支持外卖</span>
+          </div>
         </div>
+      </div>
     </div>
+    <div class="poi-item-wrapper">
+
+    </div>
+  </div>
 
 
-    <!-- <div id="map"></div> -->
-    <script>
-        // 1.距离 116.428598,39.947585 
-        // 2.点 经纬度 116.38708,39.983301
-        const myLatitude = '39.947585',
-            myLongitude = '116.428598',
-            kfcLatitude = '39.983301',
-            kfcLongitude = '116.38708';
+  <!-- <div id="map"></div> -->
+  <script>
+    // 1.距离 116.428598,39.947585 
+    // 2.点 经纬度 116.38708,39.983301
+    const myLatitude = '39.947585',
+      myLongitude = '116.428598',
+      kfcLatitude = '39.983301',
+      kfcLongitude = '116.38708';
+    
+    //坐标 店名 评分 ... {} JSON 对象字面量
+    const shops = [
+      {
+        name: '肯德基',
+        pos:['','']
+      }
+    ];
 
-        // sdk 有点大
-        // js事件机制
-        window.onload = function () {
-            function parseDistance(distance) {
-                // 如果 > 1000米 返回 4.1km
-                // 否则 整数 936m
-                if (distance < 1000) {
-                    return parseInt(distance);
-                } else {
-                    return (distance / 1000).toFixed(1);
-                }
-            }
-
-
-            // 开始我们的js编程
-            const map = new BMap.Map('map'); // 实例化地图
-            // map.centerAndZoom("北京市东城区人民法院", 17)
-
-
-            const myPoint = new BMap.Point(myLongitude, myLatitude);
-            const kfcPoint = new BMap.Point(kfcLongitude, kfcLatitude);
-            const distance = parseDistance(
-                map.getDistance(myPoint, kfcPoint)
-            );
-            console.log(distance);
-
-            // dom元素操作在页面上动态显示元素
-            document.querySelector('.poi-name').innerHTML = '肯德基';
-            document.querySelector('.location').innerHTML = distance;
-            document.querySelector('.imgbox img').src =
-                "https://p0.meituan.net/200.0/deal/607cffdccca7f4da09a2dddeedd31a8e49072.jpg@126_0_388_388a%7C267h_267w_2e_100Q"
+    // sdk 有点大
+    // js事件机制
+    window.onload = function () {
+      function parseDistance(distance) {
+        // 如果 > 1000米 返回 4.1km
+        // 否则 整数 936m
+        if (distance < 1000) {
+          return parseInt(distance);
+        } else {
+          return (distance / 1000).toFixed(1);
         }
-    </script>
+      }
+
+
+      // 开始我们的js编程
+      const map = new BMap.Map('map'); // 实例化地图
+      // map.centerAndZoom("北京市东城区人民法院", 17)
+
+
+      const myPoint = new BMap.Point(myLongitude, myLatitude);
+      const kfcPoint = new BMap.Point(kfcLongitude, kfcLatitude);
+      const distance = parseDistance(
+        map.getDistance(myPoint, kfcPoint)
+      );
+      console.log(distance);
+
+      // dom元素操作在页面上动态显示元素
+      document.querySelector('.poi-name').innerHTML = '肯德基';
+      document.querySelector('.location').innerHTML = distance;
+      document.querySelector('.imgbox img').src =
+        "https://p0.meituan.net/200.0/deal/607cffdccca7f4da09a2dddeedd31a8e49072.jpg@126_0_388_388a%7C267h_267w_2e_100Q"
+    }
+  </script>
 </body>
 
 </html>

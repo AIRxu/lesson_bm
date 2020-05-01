@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  123213
+
+  <script>
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/getPosts', true);
+    xhr.timeout = 2000;
+    // 0 ~ 4
+    // query=js&type=all
+    // query: 关键词
+    // type: 类型
+    xhr.setRequestHeader('ContentType','application/json')
+    xhr.addEventListener('timeout', function () {
+      console.log('timeout');
+    })
+    xhr.addEventListener('readystatechange', function () {
+      if(xhr.readyState === 4) {
+        console.log(xhr.response, xhr.state);
+      }
+    })
+    xhr.send(`query=js&type=all`);
+  </script>
+</body>
+</html>

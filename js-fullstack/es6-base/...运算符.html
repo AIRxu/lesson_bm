@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- ... 是展开运算符 -->
+<script>
+  const max = Math.max(-1. -9, -5);
+  let arr = [10, 9, 8, 7];
+  const max1 = Math.max(...arr);
+  console.log(max1);
+  let str = 'abcde';
+  // => 数组 [a, b, c, d, e]
+  let arr1 = [...str];
+  console.log(arr1);
+
+  let obj = {
+    name: "lihua",
+    sex:"man",
+    a:{
+      c:{
+        d:1
+      }
+    }
+  }
+  // console.log({...obj});
+  let obj3 = {...obj}
+  console.log(obj3);
+  console.log('d',obj3.a.c.d);
+  
+  // obj和obj1指向同一个地址，怎么避免？
+  // 对于obj进行一次拷贝、复制
+  // 浅复制：只复制第一层
+  // let obj1 = obj;
+  // 让obj1指向一个新的、从obj中拷贝过去的新对象
+  let obj1 = {...obj}
+  delete obj1.name;
+  // 两个对象在第二层的c还是相关联的，只有第一层不同
+  delete obj1.a.c;
+  console.log(obj,obj1);
+  
+
+  // es6 对函数的扩展：剩余参数
+  // ...rest 只能用来接收余下的元素，不能接收中间的元素
+  function sum(a, b, ...rest) {
+    // 把剩余的数整理成数组
+    console.log(rest);
+  }
+  sum(0, 1, 2, 3, 4, 5)
+</script>

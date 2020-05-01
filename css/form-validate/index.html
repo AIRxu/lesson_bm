@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- action/class 叫做属性，attribute action：提交到哪里去 -->
+    <form class="form" action="http://www.baidu.com" name="myform">
+
+        <!-- 用for属性把label和input关联起来 -->
+        <!-- 输入框 -->
+        <div>
+            <label for="userName">用户名</label>
+            <input type="text" placeholder="请输入用户名" id="username">
+        </div>
+        <div>
+            <label for="pwd">密码</label>
+            <input type="text" placeholder="请输入密码" id="pwd">
+        </div>
+        <div>
+            <label for="cfmpwd">确认密码</label>
+            <input type="text" placeholder="再次输入密码" id="cfmpwd">
+        </div>
+        <!-- 单选 -->
+        <div>
+            <!-- name：都是性别的选项，所以name一致 -->
+            <label for="sex">性别</label>
+            <input type="radio" value="男" name="sex" id="nan" checked>
+            <label for="nan">男</label>
+            <input type="radio" value="女" name="sex" id="nv">
+            <label for="nv">女</label>
+        </div>
+        <div>
+            <label for="hobby">爱好</label>
+            <select name="hobby" id="hobby">
+                <option value="dog" selected>狗</option>
+                <option value="cat">猫</option>
+            </select>
+        </div>
+        <button type="submit">提交</button>
+        <div>
+            <span>用户名：123</span>
+            <span>密码：345</span>
+            <span>性别：男</span>
+            <span>hobby：狗</span>
+        </div>
+    </form>
+    <script>
+        // 1 拿到form documents.forms 取到所有的表单
+        const form = document.forms.myform;
+        console.log(form);
+
+        const hobby = form.hobby.value;
+        console.log(hobby);
+        // 提交的时候
+        form.addEventListener('submit', function (ev) {
+            console.log('提交了');
+            // 阻止html表单默认的特点、事件
+            ev.preventDefault();
+            const userName = form.username.value;
+            const pwd = form.pwd.value;
+            const cfmpwd = form.cfmpwd.value;
+            const sex = form.sex.value;
+            const hobby = form.hobby.value;
+
+            // trim()函数去除值前面的空格
+            if (userName.trim().length === 0) {
+                alert('userName 不能为空');
+                return;
+            }
+            if (cfmpwd.trim() !== pwd) {
+                alert('确认密码和密码不一致');
+                return;
+            }
+            console.log(username, pwd, cfmpwd, sex, hobby);
+            // 显示：动态构造html结构
+            // 构造一个div
+            const div = document.createElement('div');
+            div.innerHTML = `
+            <span>用户名：${username}</span>
+            <span>密码：${pwd}</span>
+            <span>sex：${sex}</span>
+            <span>hobby：${hobby}</span>
+            `
+            // 插入到页面上
+            document.body.appendChild(div);
+        })
+    </script>
+
+
+
+</body>
+
+</html>
